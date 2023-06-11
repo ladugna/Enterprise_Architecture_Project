@@ -1,0 +1,18 @@
+server:
+  port: 9090
+spring:
+  security:
+    user:
+      name: user
+      password: password
+  application:
+    name: ors-client
+logging:
+  file:
+    name: /CS544/Logging/${spring.application.name}/logs
+
+api-client:
+  name: ors-rest-service
+  url: http://localhost:9000
+  username: user
+  password: pass

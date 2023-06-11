@@ -1,0 +1,110 @@
+server:
+  port: 9000
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: server
+
+spring:
+  security:
+    user:
+      name: user
+      password: pass
+  application:
+    name: OnlineRetailSystem
+  datasource:
+    url: jdbc:hsqldb:hsql://localhost:9003/trainingdb
+    username: SA
+    password:
+    driver-class: org.hsqldb.jdbcDriver
+  jpa:
+    hibernate:
+      ddl-auto: create
+      show-sql: true
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.HSQLDialect
+logging:
+  file:
+    name: logs
+  #    name: ./${spring.application.name}.logs
+  level:
+    root: ERROR
+    org:
+      springframework: ERROR
+#
+#spring:
+#  security:
+#    user:
+#      name: user
+#      password: pass
+#  application:
+#    name: OnlineRetailSystem
+#  datasource:
+#    url: jdbc:sqlserver://cs544group2.database.windows.net:1433;databaseName=OnlineRetailSystem;trustServerCertificate=true
+#    username: group2
+#    password: OnlineRetailSystem2
+#    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#    hikari:
+#      maximumPoolSize: 10
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+#      ddl-auto: none
+#    properties:
+#      hibernate:
+#        format_sql: true
+#        dialect: org.hibernate.dialect.SQLServerDialect
+
+#spring:
+#  security:
+#    user:
+#      name: user
+#      password: pass
+#  application:
+#    name: OnlineRetailSystem
+#  datasource:
+#    url: jdbc:sqlserver://cs544group2.database.windows.net:1433;databaseName=OnlineRetailSystem;trustServerCertificate=true
+#    username: group2
+#    password: OnlineRetailSystem2
+#    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+#    properties:
+#      hibernate:
+#        format_sql: true
+#        dialect: org.hibernate.dialect.SQLServerDialect
+#    hikari:
+#      maximumPoolSize: 10
+
+#this config for postgresql
+#spring:
+#  application:
+#    name: lab
+#  datasource:
+#    password: 1
+#    url: jdbc:postgresql://localhost:5432/lab
+#    username: postgres
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        format_sql: true
+#    show-sql: true
+#    defer-datasource-initialization: true
+#    generate-ddl: true
+#  sql:
+#    init:
+#      mode: always
+#server:
+#  port: 8080
