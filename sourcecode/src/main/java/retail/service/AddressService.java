@@ -9,15 +9,14 @@ import java.util.Optional;
 
 public interface AddressService {
 
-   /* public AddressResponse createNewAddress(String addressLine, String aptNo, String city,
+    public Address createNewAddress(String addressLine, String aptNo, String city,
                                     String stateCode, String stateName, double percent, String countryRegion, String postalCode,
-                                    String phoneNumber, String phoneType, String addressType);*/
-    public Address createNewAddress(AddressResponse addressResponse);
+                                    String phoneNumber, String phoneType, String addressType);
     public Optional<AddressResponse> getAddressByCity(String city);
     public Page<AddressResponse> getAllAddresses(Pageable pageable);
-   /* public Address modifyAddressByAddressId(String addressLine, String aptNo, String city,
+    public Address modifyAddressByAddressId(String addressLine, String aptNo, String city,
                                             String stateCode, String stateName, double percent, String countryRegion, String postalCode,
-                                            String phoneNumber,String phoneType, String addressType, Long addressId);*/
+                                            String phoneNumber,String phoneType, String addressType, Long addressId);
     //public boolean deleteAddressByAddressLineAndApt(String addressLine1, String aptNo);
    public boolean deleteAddressById(Long id);
     public Address findById(Long addressId);

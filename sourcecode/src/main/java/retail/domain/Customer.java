@@ -34,7 +34,7 @@ public class Customer {
     private Address BillingAddressId;
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Address PreferredShippingAddressId;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Collection<Address> ShippingAddresses;
     @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     private Collection<CreditCard> CreditCards;

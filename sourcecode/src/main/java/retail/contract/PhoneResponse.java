@@ -15,5 +15,5 @@ public class PhoneResponse {
         this.phoneNumber = phoneNumber;
     }
 
-    private PhoneTypeResponse phoneTypeResponse;
+    private PhoneType phoneType;
 }

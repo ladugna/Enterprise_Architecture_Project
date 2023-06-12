@@ -1,8 +1,12 @@
 package retail.domain;
 
+
+
 import javax.persistence.*;
 
 import lombok.Data;
+
+
 @Entity
 @Data
 
@@ -14,9 +18,9 @@ public class Address {
     private String addressLine;
     private String aptNo;
     private String city;
-    private String postalCode;
     @ManyToOne(cascade = CascadeType.PERSIST)
     private StateProvince StateProvince;
+    private String postalCode;
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Phone phone;
     @ManyToOne(cascade = CascadeType.PERSIST)
@@ -31,6 +35,7 @@ public class Address {
         this.postalCode = postalCode;
 
     }
+
 
     public Address() {
 

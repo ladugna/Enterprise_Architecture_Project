@@ -22,7 +22,6 @@ public class ServiceTimerAdvice {
         log.info("Time to execute " + call.getSignature().getName() + " = " + totaltime + " ms");
 
         return retVal;
-        //
     }
 
 }

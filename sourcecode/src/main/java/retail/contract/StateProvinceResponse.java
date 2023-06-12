@@ -12,7 +12,7 @@ public class StateProvinceResponse {
     private String code;
     private String name;
     private double taxPercent;
-    private CountryRegionResponse countryRegionResponse;
+    private CountryRegion countryRegion;
 
     public StateProvinceResponse(String code, String name, double taxPercent) {
        this.code = code;

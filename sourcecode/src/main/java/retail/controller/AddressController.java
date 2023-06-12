@@ -32,24 +32,23 @@ public class AddressController {
 
     @PostMapping
     public ResponseEntity<?> createAddress(@RequestBody AddressResponse addressResponse) {
-       /* Address address = addressService.createNewAddress(addressResponse.getAddressLine(),
+        Address address = addressService.createNewAddress(addressResponse.getAddressLine(),
                 addressResponse.getAptNo(), addressResponse.getCity(),
-                addressResponse.getStateProvinceResponse().getCode(),
-                addressResponse.getStateProvinceResponse().getName(),
-                addressResponse.getStateProvinceResponse().getTaxPercent(),
-                addressResponse.getStateProvinceResponse().getCountryRegionResponse().getName(),
+                addressResponse.getStateProvince().getCode(),
+                addressResponse.getStateProvince().getName(),
+                addressResponse.getStateProvince().getTaxPercent(),
+                addressResponse.getStateProvince().getCountryRegion().getName(),
                 addressResponse.getPostalCode(),
-                addressResponse.getPhoneTypeResponse().getName(),
-                addressResponse.getPhoneTypeResponse().get,
-                addressResponse.getAddressTypeResponse().getName());*/
-        Address address=addressService.createNewAddress(addressResponse);
+                addressResponse.getPhone().getPhoneNumber(),
+                addressResponse.getPhone().getPhoneType().getName(),
+                addressResponse.getAddressType().getName());
         if (address == null) {
             return new ResponseEntity<>(new CustomErrorType("No address Found "), HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(address, HttpStatus.OK);
     }
 
-   /* @PutMapping("/{addressId}")
+    @PutMapping("/{addressId}")
     public ResponseEntity<?> updateAddress(@RequestBody AddressResponse addressResponse, @PathVariable("addressId") Long addressId) {
         Address address= addressService.findById(addressId);
 
@@ -67,7 +66,7 @@ public class AddressController {
                 addressResponse.getPhone().getPhoneType().getName(),
                 addressResponse.getAddressType().getName(), addressId);
               return new ResponseEntity<>(address, HttpStatus.OK);
-    }*/
+    }
     @DeleteMapping("/{addressId}")
     public ResponseEntity<?> deleteAddressById(@PathVariable("addressId") Long addressId) {
         boolean deleted = addressService.deleteAddressById(addressId);

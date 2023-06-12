@@ -14,33 +14,48 @@ spring:
   application:
     name: OnlineRetailSystem
   datasource:
-    url: jdbc:hsqldb:hsql://localhost:9003/trainingdb
-    username: SA
-    password:
-    driver-class: org.hsqldb.jdbcDriver
+    url: jdbc:sqlserver://cs544group2.database.windows.net:1433;databaseName=OnlineRetailSystem;trustServerCertificate=true
+    username: group2
+    password: OnlineRetailSystem2
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    hikari:
+      maximumPoolSize: 10
   jpa:
+    show-sql: false
     hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
       ddl-auto: create
-      show-sql: true
-      properties:
-        hibernate:
-          dialect: org.hibernate.dialect.HSQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.SQLServerDialect
+#  datasource:
+#    url: jdbc:hsqldb:hsql://localhost:9001
+#    username: SA
+#    password:
+#    driver-class: org.hsqldb.jdbcDriver
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#      show-sql: true
+#      properties:
+#        hibernate:
+#          dialect: org.hibernate.dialect.HSQLDialect
 logging:
   file:
     name: logs
-  #    name: ./${spring.application.name}.logs
+#    name: ./${spring.application.name}.logs
   level:
     root: ERROR
     org:
       springframework: ERROR
+    retail: INFO
 #
 #spring:
-#  security:
-#    user:
-#      name: user
-#      password: pass
 #  application:
-#    name: OnlineRetailSystem
+#    name: OnlineRetailSystem-server
 #  datasource:
 #    url: jdbc:sqlserver://cs544group2.database.windows.net:1433;databaseName=OnlineRetailSystem;trustServerCertificate=true
 #    username: group2
@@ -59,7 +74,7 @@ logging:
 #      hibernate:
 #        format_sql: true
 #        dialect: org.hibernate.dialect.SQLServerDialect
-
+#
 #spring:
 #  security:
 #    user:

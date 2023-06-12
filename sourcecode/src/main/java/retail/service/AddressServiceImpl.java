@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import retail.contract.*;
+import retail.contract.AddressResponse;
 import retail.domain.*;
 import retail.repository.AddressRepository;
 import retail.repository.CustomerRepository;
@@ -16,7 +15,6 @@ import retail.util.Util;
 import java.util.Optional;
 
 @Service
-@Transactional
 public class AddressServiceImpl implements AddressService {
     @Autowired
     private ModelMapper mapper;
@@ -25,11 +23,11 @@ public class AddressServiceImpl implements AddressService {
    @Autowired
    private CustomerRepository customerRepository;
 
-/*@Override
-public AddressResponse createNewAddress(String addressLine, String aptNo, String city,
+@Override
+public Address createNewAddress(String addressLine, String aptNo, String city,
                                 String stateCode, String stateName, double percent, String countryRegion, String postalCode,
                                 String phoneNumber, String phoneType, String addressType) {
-    AddressResponse address = new Address(addressLine, aptNo, city, postalCode);
+    Address address = new Address(addressLine, aptNo, city, postalCode);
     AddressType addressType1 = new AddressType(addressType);
     PhoneType phoneType1 = new PhoneType(phoneType);
 
@@ -46,53 +44,10 @@ public AddressResponse createNewAddress(String addressLine, String aptNo, String
     addressRepository.save(address);
     customer.getShippingAddresses().add(address);
     return address;
-}*/
-
-    @Override
-    public Address createNewAddress(AddressResponse addressResponse1) {
-    Address address= AddressAdapter1.getAddressFromAddressResponse(addressResponse1);
-     // AddressResponse addressResponse1=new AddressResponse();
-      /* address.setAddressLine(addressResponse1.getAddressLine());
-       address.setAptNo(addressResponse1.getAptNo());
-       address.setCity(addressResponse1.getCity());*/
-        Customer customer= customerRepository.findByUsername(Util.getLoggedInUserName());
-        addressRepository.save(address);
-        customer.getShippingAddresses().add(address);
-        return address;
-    /*    addressResponse1.setAddressLine(addressResponse1.getAddressLine());
-        addressResponse1.setAptNo(addressResponse1.getAptNo());
-        addressResponse1.setCity(addressResponse1.getCity());
-
-        AddressTypeResponse addressTypeResponse=new AddressTypeResponse();
-        addressTypeResponse.setName(addressTypeResponse.getName());
-        PhoneTypeResponse phoneTypeResponse=new PhoneTypeResponse();
-        phoneTypeResponse.setName(phoneTypeResponse.getName());
-        CountryRegionResponse countryRegionResponse=new CountryRegionResponse();
-        countryRegionResponse.setName(countryRegionResponse.getName());
-        StateProvinceResponse stateProvinceResponse=new StateProvinceResponse();
-        stateProvinceResponse.setCode(stateProvinceResponse.getCode());
-        stateProvinceResponse.setName(stateProvinceResponse.getName());
-        stateProvinceResponse.setTaxPercent(stateProvinceResponse.getTaxPercent());
-        stateProvinceResponse.setCountryRegionResponse(countryRegionResponse);
-        PhoneResponse phoneResponse=new PhoneResponse();
-        phoneResponse.setPhoneNumber(phoneResponse.getPhoneNumber());
-        phoneResponse.setPhoneTypeResponse(phoneTypeResponse);
-        //address.setAddressTypeRe(addressTypeResponse);
-        addressResponse1.setStateProvinceResponse(stateProvinceResponse);
-        addressResponse1.setAddressTypeResponse(addressTypeResponse);
-        addressResponse1.setPhoneResponse(phoneResponse);
-
-        Customer customer= customerRepository.findByUsername(Util.getLoggedInUserName());
-
-        addressRepository.save(addressResponse1);
-        customer.getShippingAddresses().add(address);
-        return addressResponse1;*/
+}
 
 
-    }
-
-
-    @Override
+  @Override
   public Optional<AddressResponse> getAddressByCity(String city) {
       return addressRepository.findAddressByCity(city)
               .map(ent -> mapper.map(ent, AddressResponse.class));
@@ -104,9 +59,7 @@ public AddressResponse createNewAddress(String addressLine, String aptNo, String
         return addressRepository.findAll(pageable).map(entity->mapper.map(entity, AddressResponse.class));
     }
 
-
-
-   /* @Override
+    @Override
     public Address modifyAddressByAddressId(String addressLine, String aptNo, String city,
                                  String stateCode, String stateName, double percent, String countryRegion, String postalCode,
                                  String phoneNumber,String phoneType, String addressType, Long addressId) {
@@ -130,7 +83,7 @@ public AddressResponse createNewAddress(String addressLine, String aptNo, String
         addressRepository.save(address);
         return address;
 
-    }*/
+    }
 
    /* @Override
     public boolean deleteAddressByAddressLineAndApt(String addressLine1, String aptNo) {
